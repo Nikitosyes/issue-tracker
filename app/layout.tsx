@@ -3,8 +3,9 @@ import "./theme-config.css";
 import "./globals.css";
 import type { Metadata } from "next";
 import NavBar from "./NavBar";
-import { Theme } from "@radix-ui/themes";
+import { Container, Theme } from "@radix-ui/themes";
 import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Issues tracker App",
@@ -27,7 +28,12 @@ export default function RootLayout({
       <body>
         <Theme accentColor="lime" grayColor="mauve" panelBackground="solid">
           <NavBar />
-          <main className="p-5">{children}</main>
+          <main className="p-5">
+            <Container>
+              <Toaster position="bottom-center" />
+              {children}
+            </Container>
+          </main>
         </Theme>
       </body>
     </html>
